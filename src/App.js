@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Page, Toolbar, Button, BottomToolbar, Carousel, CarouselItem, Switch } from 'react-onsenui';
 import 'onsenui/css/onsenui.css';
 import 'onsenui/css/onsen-css-components.css';
@@ -12,16 +12,18 @@ const data = [
     title: 'Kaczuszki do kąpieli żółte',
     country: 'Polska',
     tag: 'Zabawki',
-    link: 'UOKiK'
+    link: 'UOKiK',
+    hiddenTag: 'all'
   },
   {
     imgSrc: 'zadanie/27320-1.jpg',
     content: 'Zagrożenie: Uduszenie. Wyrób nie spełnia wymagań § 5 ust. 1 i ust. 2 rozporządzenia Ministra Rozwoju i Finansów z dnia 20 października 2016 r. w sprawie wymagań dla zabawek (Dz.U. poz. 1730) oraz w związku z ppkt 1.4.2 i ppkt 1.4.3 załącznika nr 1 pkt 1 „Wymagania w zakresie właściwości fizycznych i mechanicznych” do rozporządzenia, z uwagi na odłączenie od zabawki przyssawki z linką, która jest jednocześnie małym elementem. Ponadto na wyrobie nie umieszczono oznakowania CE',
     title: 'Kot maskotka miękka wypchana',
     country: 'Polska',
-    tag: 'Zabawki',
+    tag: 'Sprzęt elektroniczny',
     link: 'UOKiK',
-    time: '1 godz.'
+    time: '1 godz.',
+    hiddenTag: 'all'
   },
   {
     imgSrc: 'zadanie/3.jpg',
@@ -29,12 +31,18 @@ const data = [
     title: 'Wyposażenie akcesoryjne Asystent Zmiany Biegów Triumph',
     country: 'Polska',
     tag: 'Zabawki',
-    link: 'UOKiK'
+    link: 'UOKiK',
+    hiddenTag: 'all'
   }
 ]
 
 
 function App() {
+  const [active, setActive] = useState('active2')
+  const [notActive, setNotActive] = useState('')
+  let filteredData;
+  const [filtered, setFiltered] = useState(data)
+ 
 
   return (
     <div className="App">
@@ -47,7 +55,8 @@ function App() {
         <Switch checked={false} onChange={() => { }}></Switch>
         </div>
 
-        {data.map(data =>
+        
+        {filtered.map(data =>
         <CardComponent title={data.title} content={data.content} imgSrc={data.imgSrc} country={data.country} tag={data.tag} link={data.link} time={data.time}/>)}
 
 
@@ -55,12 +64,24 @@ function App() {
         <BottomToolbar className='carouselContainer'>
           <Carousel fullscreen swipeable itemWidth={1200} >
             <CarouselItem swipeable>
-              <Button className='center buttons carousel' modifier='outline' >Wszystkie</Button>
-              <Button className='center buttons carousel' modifier='outline' >Sprzęt elektroniczny</Button>
-              <Button className='center buttons carousel' modifier='outline' >Zabawki</Button>
-              <Button className='center buttons carousel' modifier='outline' >Motoryzacja</Button>
-              <Button className='center buttons carousel' modifier='outline' >Żywność</Button>
-              <Button className='center buttons carousel' modifier='outline' >Nieżywność</Button>
+              <Button className='center buttons carousel'  modifier='outline' onClick={() => {filteredData = data.filter(data => data.tag === 'Wszystkie')
+            setFiltered(data)
+            setActive('active2')}}  >Wszystkie</Button>
+              <Button className='center buttons carousel' modifier='outline' onClick={() => {filteredData = data.filter(data => data.tag === 'Sprzęt elektroniczny')
+            setFiltered(filteredData)
+            setActive('active2')}}  >Sprzęt elektroniczny</Button>
+              <Button className='center buttons carousel' className={active} modifier='outline' onClick={() => {filteredData = data.filter(data => data.tag === 'Zabawki')
+            setFiltered(filteredData)
+            setActive('active2')}} >Zabawki</Button>
+              <Button className='center buttons carousel' modifier='outline' onClick={() => {filteredData = data.filter(data => data.tag === 'Motoryzacja')
+            setFiltered(filteredData)
+            setActive('active2')}} >Motoryzacja</Button>
+              <Button className='center buttons carousel' modifier='outline' onClick={() => {filteredData = data.filter(data => data.tag === 'Żywność')
+            setFiltered(filteredData)
+            setActive('active2')}} >Żywność</Button>
+              <Button className='center buttons carousel' modifier='outline' onClick={() => {filteredData = data.filter(data => data.tag === 'Nieżywność')
+            setFiltered(filteredData)
+            setActive('active2')}} >Nieżywność</Button>
 
             </CarouselItem>
 
