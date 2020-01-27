@@ -16,11 +16,20 @@ opacity: 1;
 }
 
 .carousel{
- margin: 0 20px;
+ margin: 0 20px 0 0;
 }
 
 .ons-swiper-target{
   margin: 0 -5px 20px 5px;
+}
+
+.ons-button{
+  margin: 0 30px;
+}
+
+
+.ons-carousel-item{
+  margin: 0 20px;
 }
 
 .ons-swiper-target :last-child{
@@ -37,7 +46,7 @@ opacity: 1;
 
 .bottom-bar {
   position: fixed;
-  margin-bottom: 10px;
+ background: rgba(255,255,255, 0.7)
 }
 
 .card{
@@ -94,6 +103,7 @@ opacity: 1;
 font-size: 12px;
 margin: 10px 10%;
 display: flex;
+flex-direction: column
 }
 
 .flexIcons{
@@ -122,5 +132,9 @@ display: flex;
 }
 
 .active2{
-  background: blue;
+  background: rgb(149, 149, 223);
+}
+
+.notActive{
+  background: transparent;
 }
