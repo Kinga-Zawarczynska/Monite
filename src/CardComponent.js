@@ -8,7 +8,7 @@ function CardComponent(props) {
     <div >
       <Card>
         <div className='img'>
-          <img src={`'${imgSrc}'`} alt="description"></img>
+          <img src={imgSrc} alt="description"></img>
         </div>
         <div>
           <div className='title'>{title} </div>
